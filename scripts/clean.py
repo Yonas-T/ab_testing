@@ -10,9 +10,8 @@ df = pd.read_csv("../data/AdSmartABdata.csv", na_values=missing_values)
 
 class Clean:
 
-    def __init__(self):
+    def __init__(self, df: pd.DataFrame):
         self.df = df
-        pass
 
     def percent_missing(self):
 
@@ -113,7 +112,7 @@ class Clean:
             self.df[col] = self.df[col].astype("string")
 
     # drop columns with more than 30% missing values
-    def drop_missing_value(self, col):
+    def drop_missing_value(self):
         perc = 30.0  # in percent %
         min_count = int(((100 - perc) / 100) * self.df.shape[0] + 1)
         self.df.dropna(axis=1, thresh=min_count, inplace=True)
