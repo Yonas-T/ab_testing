@@ -1,0 +1,4 @@
+outs:
+- md5: 493c00e89f15b1304525f81ac75384a5
+  size: 99373
+  path: data_with_platform.csv
