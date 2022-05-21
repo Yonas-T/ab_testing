@@ -1,11 +1,14 @@
 import pandas as pd
 import logging
+
+
 def save_csv(df, csv_path, index=False):
     try:
         df.to_csv(csv_path, index=index)
         logging.info(f'Csv file saved in {csv_path}')
     except Exception:
         logging.exception('File saving failed.')
+
 
 def read_csv(csv_path, missing_values=[]):
     try:
@@ -14,7 +17,8 @@ def read_csv(csv_path, missing_values=[]):
         return df
     except FileNotFoundError:
         logging.exception('File not found.')
-            
+
+
 df = read_csv("../data/AdSmartABdata.csv")
 df.drop('browser', inplace=True, axis=1)
 save_csv(df, "../data/AdSmartABdata.csv")
