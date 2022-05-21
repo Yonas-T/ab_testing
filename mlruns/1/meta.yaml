@@ -1,0 +1,4 @@
+artifact_location: file:///Users/yonastadesse/Documents/10%20Academy%20Projects/week%202/ab_testing/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: SmartAD
