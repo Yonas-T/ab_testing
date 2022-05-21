@@ -1,6 +1,7 @@
 FROM python:3.9
 WORKDIR /app
-RUN pip install -r requiremts.txt
+COPY requirements.txt ./requirements.txt
+RUN pip install -r requirements.txt
 #RUN python ./train.py
 COPY . .
 EXPOSE 5000
