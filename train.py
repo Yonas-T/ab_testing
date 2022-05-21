@@ -1,4 +1,4 @@
-from dbm import dumb
+
 import os 
 import numpy as np
 import pandas as pd
@@ -62,21 +62,11 @@ class Train:
         
         return df_browser
 
-    def access_data_from_dvc(self, path, df = label_encoder()):
-        # self.browser_data_split_os()
-        # self.browser_data_split_browser()
-        
+    def access_data_from_dvc(self, df = label_encoder()):
+       
         df_browser_copied = df.copy()
         df_browser = df_browser_copied.drop(columns='browser', axis=1)
         df_browser.to_csv('data/data_with_platform.csv', index=False)
-        
-        # with dvc.api.open(
-        # path,
-        # mode='rb',
-        # ) as data:
-        #      df_from_dvc = pd.read_csv(data)
-        #      df_from_dvc.head()
-        #      df_from_dvc.drop(['auction_id'],axis=1,inplace=True)
         
 
         data_url= dvc.api.get_url(
@@ -94,7 +84,7 @@ class Train:
 
     def data_split(self, path):
         
-        data_df = self.access_data_from_dvc(path)
+        data_df = self.access_data_from_dvc()
         X_train, y_train, X_valid, y_valid, X_test, y_test = train_valid_test_split(data_df, target = 'user_response', 
                                                                             train_size=0.7, valid_size=0.2, test_size=0.1)
         print(X_train.shape), print(y_train.shape)
@@ -103,7 +93,7 @@ class Train:
         return X_train, y_train, X_valid, y_valid, X_test, y_test
 
     def train_model(self):
-        MODEL_PATH = os.path.join(os.getcwd(), "models")
+        MODEL_PATH = os.path.join(os.getcwd(), "model")
         MODEL_PATH_LRM = os.path.join(MODEL_PATH, "clf_lrm.joblib")
 
         mlflow.set_experiment("SmartAD")
@@ -115,7 +105,7 @@ class Train:
         model_predictions = model.predict(X_test)
         result=cross_val_score(estimator=model,X=X_train,y=y_train,cv=5,scoring='accuracy')
         
-        dump(model, 'MODEL_PATH_LRM')
+        dump(model, MODEL_PATH_LRM)
         print(result)
         return result, model_predictions
 
