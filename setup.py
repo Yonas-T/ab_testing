@@ -21,7 +21,7 @@ setup(
     install_requires=requirements,
     long_description=readme,
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 3 - Under Development',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
         'Operating System :: POSIX :: Linux',
