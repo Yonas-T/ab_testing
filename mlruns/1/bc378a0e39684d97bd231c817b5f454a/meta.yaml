@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/yonastadesse/Documents/10%20Academy%20Projects/week%202/ab_testing/mlruns/1/bc378a0e39684d97bd231c817b5f454a/artifacts
+end_time: 1653143338397
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: bc378a0e39684d97bd231c817b5f454a
+run_uuid: bc378a0e39684d97bd231c817b5f454a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1653143338390
+status: 3
+tags: []
+user_id: yonastadesse

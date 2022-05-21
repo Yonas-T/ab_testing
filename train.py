@@ -80,8 +80,8 @@ class Train:
         
 
         data_url= dvc.api.get_url(
-                "data/browser_clean_data.csv",
-        repo="https://github.com/Yonas-T/ab_testing/tree/environments_setup",)
+                "data/data_with_os.csv",
+        repo="https://github.com/Yonas-T/ab_testing",)
 
         mlflow.log_param("data_url", data_url)
 
